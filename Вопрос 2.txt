@@ -1,0 +1,11 @@
+SELECT DISTINCT reg.Name
+FROM reg
+JOIN orders ON orders.CustomerId = reg.CustomerId AND orders.ProductName = "молоко"
+and reg.CustomerId not in
+(
+select orders.CustomerId 
+FROM orders
+JOIN reg ON orders.CustomerId=reg.CustomerId
+where orders.ProductName='сметана'
+and orders.PurchaiseDatetime > NOW() - INTERVAL 30 DAY
+)
