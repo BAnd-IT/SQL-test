@@ -1,11 +1,11 @@
 SELECT DISTINCT reg.Name
 FROM reg
-JOIN orders ON orders.CustomerId = reg.CustomerId AND orders.ProductName = "молоко"
+JOIN orders ON orders.CustomerId = reg.CustomerId AND orders.ProductName = "РјРѕР»РѕРєРѕ"
 and reg.CustomerId not in
 (
 select orders.CustomerId 
 FROM orders
 JOIN reg ON orders.CustomerId=reg.CustomerId
-where orders.ProductName='сметана'
+where orders.ProductName='СЃРјРµС‚Р°РЅР°'
 and orders.PurchaiseDatetime > NOW() - INTERVAL 30 DAY
 )
